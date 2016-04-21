@@ -20,6 +20,8 @@ The output looks like this
 * `Inside range` is the highest available version that matches the range in your package.json
 * `Outside range` is the latest version for that package.
 
+This tool ignores all GitHub tags that are not [semver](http://semver.org/).
+
 ### GitHub API rate limits
 
 GitHub is very strict about rate limits, something like 60 requests an hour. If you get rate limited you can set `GITHUB_TOKEN` or `JSPM_GITHUB_AUTH_TOKEN` with a [GitHub personal access token](https://github.com/settings/tokens).
