@@ -2,6 +2,7 @@ var path = require('path');
 var fs = require('fs');
 var mapLimit = require('async/mapLimit');
 var fetchVersionFromNpm = require('./lib/npm');
+var fetchVersionFromGithub = require('./lib/github');
 var semver = require('semver');
 var Table = require('cli-table');
 
@@ -55,7 +56,7 @@ function extractDependencies (model) {
 }
 
 function fetchUpdates (model) {
-	info('Fetching update info for ' + model.toFetch.length + ' packages');
+	info('Fetching update info for ' + Object.keys(model.toFetch).length + ' packages');
 	return new Promise(function (resolve, reject) {
 		mapLimit(model.toFetch, 6, fetchVersionInfo, function (err, results) {
 			if (err) {
@@ -115,7 +116,8 @@ function iterate (object, action) {
 }
 
 var fetchActions = {
-	npm: fetchVersionFromNpm
+	npm: fetchVersionFromNpm,
+	github: fetchVersionFromGithub
 };
 
 function createFetchAction (name, version, type) {

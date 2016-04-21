@@ -1,13 +1,15 @@
 {
   "name": "jspm-check-updates",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Check jspm dependencies for outdated packages",
   "main": "index.js",
   "dependencies": {
     "async": "^2.0.0-rc.3",
     "cli-table": "^0.3.1",
+    "got": "^6.3.0",
     "npm": "^3.8.6",
-    "semver": "^5.1.0"
+    "semver": "^5.1.0",
+    "semver-sort": "0.0.4"
   },
   "license": "MIT",
   "bin": {
