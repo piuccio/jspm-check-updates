@@ -1,6 +1,6 @@
 {
   "name": "jspm-check-updates",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Check jspm dependencies for outdated packages",
   "main": "index.js",
   "dependencies": {
