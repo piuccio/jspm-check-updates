@@ -73,13 +73,15 @@ function filterUpdates (model) {
 	var updates = [];
 	iterate(model.modules, function (name, module) {
 		var maxSatisfy = semver.maxSatisfying(module.versions, module.semver);
-		var max = semver.gt(module.latest, maxSatisfy) ? module.latest : maxSatisfy;
+		if (maxSatisfy) {
+			var max = semver.gt(module.latest, maxSatisfy) ? module.latest : maxSatisfy;
 
-		if (module.semver.indexOf(max) === -1) {
-			updates.push(Object.assign({
-				maxSafe: maxSatisfy,
-				max: max
-			}, module));
+			if (module.semver.indexOf(max) === -1) {
+				updates.push(Object.assign({
+					maxSafe: maxSatisfy,
+					max: max
+				}, module));
+			}
 		}
 	});
 	model.updates = updates;
